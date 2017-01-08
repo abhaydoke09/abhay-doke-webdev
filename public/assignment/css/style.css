@@ -4,15 +4,24 @@ input.form-control{
 
 .form-group{
     overflow: scroll;
-    padding-bottom:40px;
+    padding-bottom:5px;
 }
 
 p.navbar-text.pull-right{
     margin-right:15px ;
+
 }
+
+p.navbar-text.pull-left{
+    margin-left:10px ;
+
+}
+
 body {
     padding-top:60px;
     overflow: scroll;
 }
+
+
 
 
