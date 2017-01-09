@@ -3,6 +3,6 @@
  */
 (function(){
     angular
-        .module('WebAppMaker',[]);
+        .module('WebAppMaker',["ngRoute"]);
 })();
 
