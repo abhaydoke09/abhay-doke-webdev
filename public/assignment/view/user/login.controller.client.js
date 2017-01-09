@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("LoginController",LoginController);
 
-    function LoginController(){
+    function LoginController($location){
      var vm = this;
      var users =   [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -19,7 +19,8 @@
 
          for (var i in users){
              if(users[i].username === username && users[i].password === password){
-                
+                $location.url("/profile/"+users[i]._id);
+                console.log('MCC');
              }
              else{
                  vm.error= 'User not found!';
