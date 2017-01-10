@@ -7,9 +7,6 @@
         .controller("ProfileController",ProfileController);
 
 
-
-
-
     function ProfileController($routeParams,UserService) {
          var vm = this;
          var id = $routeParams.id;
