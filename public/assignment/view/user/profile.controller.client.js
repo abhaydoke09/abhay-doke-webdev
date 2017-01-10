@@ -6,22 +6,41 @@
         .module("WebAppMaker")
         .controller("ProfileController",ProfileController);
 
-    var users =   [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ]
 
-    function ProfileController($routeParams) {
-        var vm = this;
-        var id = $routeParams.id;
 
-        for(var i in users){
-            if(users[i]._id===id){
-                vm.user = users[i];
+
+
+    function ProfileController($routeParams,UserService) {
+         var vm = this;
+         var id = $routeParams.id;
+
+
+        function updateUser(newUser){
+            console.log(newUser);
+            if(UserService.updateUser(id, newUser)){
+                console.log("profile was updated");
+            }
+
+            if(update){
+                console.log("profile was updated");
+                vm.updateMsg = "Profile was Updated!!";
+            }
+            else {
+                console.log("profile was not updated");
+                vm.updatMsg = "Not updated!";
             }
         }
+
+
+        function init(){
+
+            vm.user = UserService.findUserById(id);
+
+        }
+        init();
+
+
+
 
     }
 })();
