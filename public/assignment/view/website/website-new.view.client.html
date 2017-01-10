@@ -3,15 +3,15 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Edit Website
+                New Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a ng-click="model.createWebsite(name,description)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -19,33 +19,29 @@
     </div>
 </nav>
 
-<div class="container fill">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 vertical-line">
+<div class="container">
+
             <form>
                 <div class="form-group">
                     <label for="website-name">Website name</label>
-                    <input type="text" class="form-control" id="website-name" placeholder="Google">
+                    <input
+                            type="text"
+                            ng-model="name"
+                            class="form-control"
+                            id="website-name"
+                            placeholder="Google">
 
                     <label for="website-description">Website description</label>
-                    <textarea type="text" rows="4" class="form-control" id="website-description" placeholder="Description"></textarea>
+                    <textarea
+                            ng-model="description"
+                            type="text"
+                            rows="4"
+                            class="form-control"
+                            id="website-description"
+                            placeholder="Description"></textarea>
                 </div>
             </form>
-        </div>
 
-
-        <div class="col-lg-8 col-md-8 hidden-sm hidden-xs">
-            <form>
-                <div class="form-group">
-                    <label for="website-name">Website name</label>
-                    <input type="text" class="form-control" id="website-name" placeholder="Google">
-
-                    <label for="website-description">Website description</label>
-                    <textarea type="text" rows="4" class="form-control" id="website-description" placeholder="Description"></textarea>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

@@ -24,16 +24,23 @@
                 controller:"ProfileController",
                 controllerAs:"model"
             })
+            .when("/user/:userId/website/new",{
+                templateUrl:"view/website/website-new.view.client.html",
+                controller:"NewWebsiteController",
+                controllerAs:"model"
+            })
             .when("/user/:userId/website",{
                 templateUrl:"view/website/website-list.view.client.html",
                 controller:"WebsiteListController",
                 controllerAs:"model"
             })
+            .when("/user/:userId/website/:websiteId",{
+                templateUrl:"view/website/website-edit.view.client.html",
+                controller:"EditWebsiteController",
+                controllerAs:"model"
+            })
             .when("/website-edit",{
                 templateUrl:"view/website/website-edit.view.client.html"
-            })
-            .when("/website-new",{
-                templateUrl:"view/website/website-new.view.client.html"
             })
             .when("/widget-chooser",{
                 templateUrl:"view/widget/widget-chooser.view.client.html"

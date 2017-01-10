@@ -20,7 +20,10 @@
     function WebsiteService(){
 
         var api = {
-            findWebsitesForUserId : findWebsitesForUserId
+            findWebsitesForUserId : findWebsitesForUserId,
+            findWebsiteById : findWebsiteById,
+            createWebsite : createWebsite,
+            deleteWebsite : deleteWebsite
         };
         return api;
         function findWebsitesForUserId(userId){
@@ -34,5 +37,36 @@
             return resultSet;
         }
 
+        function findWebsiteById(id){
+
+            for(var i in websites){
+                if(websites[i]._id===id){
+                    return websites[i];
+                }
+            }
+            return null;
+        }
+
+        function createWebsite(developerID,name,description){
+            var newWebsite ={
+                _id:(new Date()).getTime()+"",
+                name:name,
+                description:description,
+                developerId:developerID
+            };
+            websites.push(newWebsite);
+            return newWebsite;
+
+        }
+
+        function deleteWebsite(websiteId){
+            for(var i in websites){
+                if(websites[i]._id===websiteId){
+                    websites.splice(i,1);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 })();
