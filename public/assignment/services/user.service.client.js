@@ -19,11 +19,21 @@
         var api = {
             findUserByUsernameAndPassword : findUserByUsernameAndPassword,
             findUserById: findUserById,
+            findUserByUsername:findUserByUsername,
             createUser : createUser,
             updateUser : updateUser,
             deleteUser : deleteUser
         };
         return api;
+
+        function findUserByUsername(username){
+            for(var i in users){
+                if(users[i].username===username){
+                    return users[i];
+                }
+            }
+            return null;
+        }
 
         function createUser(newUser){
             users.push(newUser);

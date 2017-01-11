@@ -23,9 +23,20 @@
             findWebsitesForUserId : findWebsitesForUserId,
             findWebsiteById : findWebsiteById,
             createWebsite : createWebsite,
-            deleteWebsite : deleteWebsite
+            deleteWebsite : deleteWebsite,
+            updateWebsite : updateWebsite
         };
         return api;
+
+        function updateWebsite(website){
+            for(var i in websites){
+                if(websites[i]._id===website._id){
+                    websites[i] = website;
+                    return true;
+                }
+            }
+            return false;
+        }
         function findWebsitesForUserId(userId){
             var resultSet = []
 
