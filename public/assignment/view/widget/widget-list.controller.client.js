@@ -11,6 +11,8 @@
             var pageId = $routeParams.pageId;
             vm.getSafeHtml = getSafeHtml;
             vm.getSafeUrl = getSafeUrl;
+            vm.userId = $routeParams.userId;
+            vm.websiteId = $routeParams.websiteId;
 
             function init(){
                 vm.widgets = WidgetService.findWidgetsForPageId(pageId);

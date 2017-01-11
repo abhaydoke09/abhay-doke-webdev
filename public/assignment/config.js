@@ -24,11 +24,27 @@
                 controller:"ProfileController",
                 controllerAs:"model"
             })
+            .when("/user/:userId/website/:websiteId/page/new",{
+                templateUrl:"view/page/page-new.view.client.html",
+                controller:"NewPageController",
+                controllerAs:"model"
+            })
             .when("/user/:userId/website/new",{
                 templateUrl:"view/website/website-new.view.client.html",
                 controller:"NewWebsiteController",
                 controllerAs:"model"
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId",{
+            templateUrl:"view/page/page-edit.view.client.html",
+            controller:"EditPageController",
+            controllerAs:"model"
+            })
+            .when("/user/:userId/website/:websiteId/page",{
+                templateUrl:"view/page/page-list.view.client.html",
+                controller:"PageListController",
+                controllerAs:"model"
+            })
+
             .when("/user/:userId/website",{
                 templateUrl:"view/website/website-list.view.client.html",
                 controller:"WebsiteListController",
@@ -38,9 +54,6 @@
                 templateUrl:"view/website/website-edit.view.client.html",
                 controller:"EditWebsiteController",
                 controllerAs:"model"
-            })
-            .when("/website-edit",{
-                templateUrl:"view/website/website-edit.view.client.html"
             })
             .when("/widget-chooser",{
                 templateUrl:"view/widget/widget-chooser.view.client.html"
@@ -54,7 +67,7 @@
             .when("/widget-youtube",{
                 templateUrl:"view/widget/widget-youtube.view.client.html"
             })
-            .when("/user/:uerId/website/:websiteId/page/:pageId/widget", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "view/widget/widget-list.view.client.html",
                 controller:"WidgetListController",
                 controllerAs:"model"
