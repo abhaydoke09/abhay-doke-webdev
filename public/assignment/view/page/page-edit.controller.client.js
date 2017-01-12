@@ -7,7 +7,7 @@
         .module("WebAppMaker")
         .controller("EditPageController",EditPageController);
 
-    function EditPageController($routeParams,PageService,$location){
+    function EditPageController($routeParams,PageService,$location,$scope){
         var vm = this;
 
 
@@ -21,6 +21,9 @@
         function init(){
 
             var pageResult = PageService.findPageById(vm.pageId);
+            $scope.name = pageResult.name;
+            $scope.title = pageResult.description;
+            console.log(pageResult);
             if(pageResult){
                 console.log(pageResult);
                 vm.name = pageResult.name;
@@ -34,7 +37,7 @@
         }
         init();
        function updatePage(name,title){
-            var result = PageService.updatePage(name,title);
+            var result = PageService.updatePage(vm.pageId,name,title);
 
             if(result){
                 console.log("user:"+vm.userId);
@@ -51,7 +54,7 @@
 
            if(result){
                console.log(vm.userId);
-               $location.url("#/user/{{vm.userId}}/website/{{vm.websiteId}}/page");
+               $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
            }
            else{
                vm.error = "Unable to edit page!!";

@@ -73,7 +73,7 @@
         function updatePage(pageId,name,title){
             for(var i in pages){
                 if(pages[i]._id===pageId){
-                    pages[i].title = title;
+                    pages[i].description = title;
                     return true;
                 }
             }
