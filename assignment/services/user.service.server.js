@@ -11,6 +11,8 @@ module.exports = function(app){
 
     app.get("/api/user",getUsers);
     app.get("/api/user/:userId",findUserById);
+    app.get("/api/user/:username/:password",findUserByCredentials);
+    app.get("/api/user/:username",findUserByUsername);
 
 
     function getUsers(req,res){
@@ -31,6 +33,7 @@ module.exports = function(app){
     }
 
     function findUserByCredentials(username,password,res){
+
         for(var i in users){
             if(users[i].username===username && users[i].password===password){
                 res.send(users[i]);
