@@ -30,8 +30,16 @@
             return null;
         }
 
-        function createUser(newUser){
-            users.push(newUser);
+        function createUser(username,password){
+            //users.push(newUser);
+
+            var user = {
+                username:username,
+                password:password
+            };
+
+
+            return $http.post("/api/user",user);
         }
         function deleteUser(userId){
             for(var i in users){
@@ -62,13 +70,8 @@
         }
 
         function findUserById(id){
-
-            for(var i in users){
-                if(users[i]._id===id){
-                    return users[i];
-                }
-            }
-            return null;
+            var url = "/api/user/"+id;
+            return $http.get(url);
         }
     }
 })();

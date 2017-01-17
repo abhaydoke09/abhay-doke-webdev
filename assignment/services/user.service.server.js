@@ -8,11 +8,23 @@ module.exports = function(app){
         {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
     ];
-
+    console.log("sdfsgsg");
+    app.post("/api/user",createUser);
     app.get("/api/user",getUsers);
     app.get("/api/user/:userId",findUserById);
     app.get("/api/user/:username/:password",findUserByCredentials);
     app.get("/api/user/:username",findUserByUsername);
+
+
+    function createUser(req,res){
+        console.log("Inside user server");
+        var user = req.body;
+        user._id = (new Date()).getTime()+"";
+        users.push(user);
+        console.log(users);
+        res.send(user);
+    }
+
 
 
     function getUsers(req,res){

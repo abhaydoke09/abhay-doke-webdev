@@ -14,6 +14,7 @@
          UserService
              .findUserByUsernameAndPassword(username,password)
              .then(function(response){
+                 console.log(response);
              var user = response.data;
              if(user){
                  $location.url("/user/"+user._id);
