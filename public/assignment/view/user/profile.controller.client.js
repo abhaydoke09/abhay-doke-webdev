@@ -7,30 +7,48 @@
         .controller("ProfileController",ProfileController);
 
 
-    function ProfileController($routeParams,UserService) {
+    function ProfileController($location, $routeParams,UserService) {
          var vm = this;
          var id = $routeParams.id;
 
+        vm.updateUser = updateUser;
+        vm.unregister = unregister;
+
+        function unregister(){
+            UserService
+                .deleteUser(id)
+                .then(
+                    function(){
+                        $location.url("/login")
+                    },
+                    function(){
+                        vm.error = "unable to remove user";
+                    }
+                )
+
+        }
 
         function updateUser(newUser){
-            console.log(newUser);
-            if(UserService.updateUser(id, newUser)){
-                console.log("profile was updated");
-            }
 
-            if(update){
-                console.log("profile was updated");
-                vm.updateMsg = "Profile was Updated!!";
-            }
-            else {
-                console.log("profile was not updated");
-                vm.updatMsg = "Not updated!";
-            }
+            UserService
+                .updateUser(id, newUser)
+                .then(
+
+
+                    function(response){
+                        console.log(response);
+                        vm.success = "User information updated successfully!!";
+                    },
+                    function(error) {
+                        vm.error = "Unable to update user information.";
+                    }
+                );
+
         }
 
 
         function init(){
-
+            console.log("Inside init");
             UserService
                 .findUserById(id)
                 .then(function(response){

@@ -14,6 +14,37 @@ module.exports = function(app){
     app.get("/api/user/:userId",findUserById);
     app.get("/api/user/:username/:password",findUserByCredentials);
     app.get("/api/user/:username",findUserByUsername);
+    app.put("/api/user/:userId",updateUser);
+    app.delete("/api/user/:userId",deleteUser)
+
+    function deleteUser(req,res){
+        var id = req.params.userId;
+        for(var i in users){
+            if(users[i]._id===id){
+                users.splice(i);
+                res.send(200);
+                return true;
+            }
+        }
+        res.send(400);
+    }
+
+    function updateUser(req,res){
+        var id = req.params.userId;
+        var newUser = req.body;
+        console.log(newUser);
+        for(var i in users){
+            if(users[i]._id===id){
+                console.log(users[i].firstName);
+                users[i].firstName = newUser.firstName;
+                users[i].lastName = newUser.lastName;
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
+
+    }
 
 
     function createUser(req,res){
