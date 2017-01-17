@@ -2,12 +2,7 @@
  * Created by abhaydoke on 11/01/17.
  */
 module.exports = function(app){
-    var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
+
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
         { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -18,31 +13,25 @@ module.exports = function(app){
     ];
 
 
-    app.post("/api/user",createUser);
-    //app.get("/api/user",getUsers);
-    //app.get("/api/user/yo/:userId",findAllWebsitesForUser);
-    app.get("/api/user/:userId",findUserById);
-    app.get("/api/user/:username/:password",findUserByCredentials);
-    app.get("/api/user/:username",findUserByUsername);
-    app.put("/api/user/:userId",updateUser);
-    app.delete("/api/user/:userId",deleteUser);
+
+    app.get("/api/user/:userId/website",findAllWebsitesForUser);
 
     //app.get("/api/user/yo",findAllWebsitesForUser);
 
 
 
-    // function findAllWebsitesForUser(req,res){
-    //     console.log("Yes");
-    //     var userId = req.params.userId;
-    //     var results = [];
-    //     for(var i in websites){
-    //         if(websites[i].developerId===userId){
-    //             results.push(websites[i]);
-    //         }
-    //     }
-    //     res.send(websites);
-    //
-    // }
+    function findAllWebsitesForUser(req,res){
+        console.log("Yes");
+        var userId = req.params.userId;
+        var results = [];
+        for(var i in websites){
+            if(websites[i].developerId===userId){
+                results.push(websites[i]);
+            }
+        }
+        res.send(results);
+
+    }
 
     function deleteUser(req,res){
         var id = req.params.userId;
@@ -123,7 +112,7 @@ module.exports = function(app){
         res.send({});
     }
 
-   function findUserById(req,res){
+    function findUserById(req,res){
         var id = req.params.userId;
         for(var i in users){
             if(users[i]._id===id){

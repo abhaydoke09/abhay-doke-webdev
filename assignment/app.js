@@ -4,7 +4,11 @@
 
 module.exports = function(app){
 
+    require("./services/website.service.server.js")(app);
     require("./services/user.service.server.js")(app);
+
+
+
     app.get("/say/:something",function(request,response){
         var msg = request.params['something'];
         response.send({message:msg});

@@ -2,6 +2,7 @@
  * Created by abhaydoke on 10/01/17.
  */
 (function(){
+    console.log("Edit Website");
     angular
         .module("WebAppMaker")
         .controller("EditWebsiteController",EditWebsiteController);
