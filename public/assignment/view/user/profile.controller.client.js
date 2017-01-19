@@ -24,7 +24,7 @@
                     function(){
                         vm.error = "unable to remove user";
                     }
-                )
+                );
 
         }
 
@@ -33,7 +33,6 @@
             UserService
                 .updateUser(id, newUser)
                 .then(
-
 
                     function(response){
                         console.log(response);

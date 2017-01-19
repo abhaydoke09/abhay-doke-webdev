@@ -1,20 +1,14 @@
 /**
  * Created by abhaydoke on 11/01/17.
  */
-module.exports = function(app){
+module.exports = function(app,models){
+
+    var userModel = models.userModel;
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
         {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
-    var websites = [
-        { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
-        { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
-        { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem" },
-        { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem" },
-        { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem" },
-        { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
     ];
 
 
@@ -78,8 +72,10 @@ module.exports = function(app){
         console.log("Inside user server");
         var user = req.body;
         user._id = (new Date()).getTime()+"";
+
+        userModel.createUser(user);
         users.push(user);
-        console.log(users);
+        //console.log(users);
         res.send(user);
     }
 
@@ -102,15 +98,34 @@ module.exports = function(app){
 
     }
 
-    function findUserByCredentials(username,password,res){
+    // function findUserByCredentials(username,password,res){
+    //     console.log("Inside find user by credentials");
+    //     console.log(username);
+    //     console.log(password);
+    //     for(var i in users){
+    //         if(users[i].username===username && users[i].password===password){
+    //             res.send(users[i]);
+    //             return;
+    //         }
+    //     }
+    //     res.send(400);
+    // }
 
+    function findUserByCredentials(req,res){
+        console.log("Inside find user by credentials");
+
+        var username = req.params.username;
+        var password = req.params.password;
+        console.log(username);
+        console.log(password);
         for(var i in users){
             if(users[i].username===username && users[i].password===password){
+                console.log(users[i]);
                 res.send(users[i]);
                 return;
             }
         }
-        //res.send({});
+        res.send(400);
     }
 
     function findUserByUsername(username,res){
@@ -120,7 +135,7 @@ module.exports = function(app){
                 return;
             }
         }
-        res.send({});
+        res.send(400);
     }
 
    function findUserById(req,res){

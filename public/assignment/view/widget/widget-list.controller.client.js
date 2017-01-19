@@ -8,14 +8,25 @@
 
         function WidgetListController($sce, $routeParams, WidgetService){
             var vm = this;
-            var pageId = $routeParams.pageId;
+            vm.pageId = $routeParams.pageId;
             vm.getSafeHtml = getSafeHtml;
             vm.getSafeUrl = getSafeUrl;
             vm.userId = $routeParams.userId;
             vm.websiteId = $routeParams.websiteId;
 
             function init(){
-                vm.widgets = WidgetService.findWidgetsForPageId(pageId);
+                 WidgetService
+                    .findWidgetsForPageId(vm.pageId)
+                    .then(function(response){
+                        console.log(response);
+                        vm.widgets = response.data;
+                        $(".container")
+                            .sortable({
+                                axis:"y"
+                            });
+                    });
+                console.log("printing all the widgets");
+                console.log(vm.widgets);
             }
             init();
 

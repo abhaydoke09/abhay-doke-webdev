@@ -14,7 +14,7 @@ module.exports = function(app){
 
 
 
-    app.get("/api/user/:userId/website",findAllWebsitesForUser);
+    app.get("/api/usr/:userId/website",findAllWebsitesForUser);
 
     //app.get("/api/user/yo",findAllWebsitesForUser);
 

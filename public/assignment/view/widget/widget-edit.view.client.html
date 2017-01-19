@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href ="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Widget Editor
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#/widget-chooser" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    URL
+
+    <input ng-model="model.widget.url" class="form-control"/>
+    <form action="/api/upload"  method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"/>
+        <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+        <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+    </form>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+
+            </div>
+            <div class="col-xs-3 text-center">
+
+            </div>
+            <div class="col-xs-3 text-center">
+
+            </div>
+            <div class="col-xs-3 text-center">
+
+                <a href="#/profile.html">
+                    <span class="glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

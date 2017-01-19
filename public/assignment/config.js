@@ -11,6 +11,11 @@
             .when("/",{
                 templateUrl:"view/home.html"
             })
+            .when("/flickr",{
+                templateUrl:"view/widget/widget-flickr-search.view.client.html",
+                controller:"FlickrImageSearchController",
+                controllerAs:"model"
+            })
             .when("/login",{
                 templateUrl:"view/user/login.view.client.html",
                 controller:"LoginController",
@@ -57,8 +62,15 @@
                 controller:"EditWebsiteController",
                 controllerAs:"model"
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "view/widget/widget-chooser.view.client.html",
+                controller:"WidgetChooserController",
+                controllerAs:"model"
+            })
             .when("/widget-chooser",{
-                templateUrl:"view/widget/widget-chooser.view.client.html"
+                templateUrl:"view/widget/widget-chooser.view.client.html",
+                controller:"WidgetChooserController",
+                controllerAs:"model"
             })
             .when("/widget-heading",{
                 templateUrl:"view/widget/widget-heading.view.client.html"
@@ -69,11 +81,17 @@
             .when("/widget-youtube",{
                 templateUrl:"view/widget/widget-youtube.view.client.html"
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
+                templateUrl: "view/widget/widget-edit.view.client.html",
+                controller:"WidgetEditController",
+                controllerAs:"model"
+            })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "view/widget/widget-list.view.client.html",
                 controller:"WidgetListController",
                 controllerAs:"model"
             })
+
             .otherwise({
                 redirectTo:"/login"
             });

@@ -9,8 +9,9 @@
     function LoginController($location, UserService){
      var vm = this;
 
-
-     vm.login = function(username,password){
+     vm.login = login;
+     function login(username,password){
+         console.log("Inside login");
          UserService
              .findUserByUsernameAndPassword(username,password)
              .then(function(response){
