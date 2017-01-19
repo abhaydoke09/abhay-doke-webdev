@@ -7,8 +7,8 @@ module.exports = function(){
         firstName:String,
         lastName:String,
         dob:Date,
-        dateCreated:{type:Date,default:Date.now}
-    });
+        dateCreated:{type:Date,default:Date.now},
+    },{collection:"assignment.user"});
 
     return UserSchema;
 };

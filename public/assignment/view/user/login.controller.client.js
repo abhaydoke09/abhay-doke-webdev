@@ -17,7 +17,7 @@
              .then(function(response){
                  console.log(response);
              var user = response.data;
-             if(user._id){
+             if(user){
                  console.log("Inside if user found");
                  $location.url("/user/"+user._id);
              }
